@@ -6,7 +6,7 @@
 
 const initialState = {};
 
-/*    ACTION CONSTANTS    */
+/*    ACTION TYPES    */
 
 const THING = "THING";
 
