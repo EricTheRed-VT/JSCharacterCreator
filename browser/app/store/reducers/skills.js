@@ -10,7 +10,6 @@ const initialState = {};
 
 for ( let skill of Skills.list() ) {
   initialState[skill] = {
-    modifier: 0,
     proficient: false,
     ability: skillAbilities[skill]
   };
@@ -21,7 +20,6 @@ for ( let skill of Skills.list() ) {
 const ADD_SKILL = "ADD_SKILL";
 const REM_SKILL = "REM_SKILL";
 
-const SET_MOD = "SET_MOD";
 const SET_PROF = "SET_PROF";
 const SET_ABIL = "SET_ABIL";
 
@@ -36,12 +34,6 @@ const addSkill = (skill, abil) => ({
 const removeSkill = skill => ({
   type: REM_SKILL,
   skill
-});
-
-const setMod = (skill, newMod) => ({
-  type: SET_MOD,
-  skill,
-  newMod
 });
 
 const setProf = (skill, newProf) => ({
@@ -73,10 +65,6 @@ const skillsReducer = (state = initialState, action) => {
 
   case REM_SKILL:
     delete newState[action.skill];
-    break;
-
-  case SET_MOD:
-    newState[action.skill].modifier = action.newMod;
     break;
 
   case SET_PROF:
