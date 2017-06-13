@@ -14,7 +14,7 @@ class Enum {
   constructor() {
     for (let i = 0; i < arguments.length; i++) {
       if (typeof arguments[i] != "string")
-        throw new Error(arguments[i] + " is not a valid Enum element. Must be a string.");
+        throw new Error(arguments[i] + " is not a valid Enum element name. Must be a string.");
 
       const elem = arguments[i].toUpperCase();
       if (!this[elem])
@@ -34,6 +34,10 @@ class Enum {
     }
     return "";
   }
+
+  list() {
+    return Object.values(this);
+  }
 }
 
-export { Enum };
+export default Enum;

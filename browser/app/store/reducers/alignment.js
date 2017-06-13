@@ -38,13 +38,11 @@ const alignmentReducer = (state = initialState, action) => {
   case setLC:
     newState.lawChaos = action.newLC;
     break;
-
-  case setLC:
+  case setGE:
     newState.goodEvil = action.newGE;
     break;
-
-  default: //did not match performable action type
-    return state;
+  default:
+    return state; //did not match performable action type
   }
 
   return newState;

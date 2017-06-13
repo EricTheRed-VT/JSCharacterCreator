@@ -2,24 +2,19 @@
 
 /*    IMPORTS    */
 
+import { Abilities } from "../../utils/enums/abilities";
+
 /*    INITIAL STATE    */
 
-class Ability {
-  constructor() {
-    this.base = 0;
-    this.raceAdj = 0;
-    this.tempAdj = 0;
-  }
-}
+const initialState = {};
 
-const initialState = {
-  strength: new Ability(),
-  dexterity: new Ability(),
-  constitution: new Ability(),
-  intelligence: new Ability(),
-  wisdom: new Ability(),
-  charisma: new Ability()
-};
+for ( let ability of Abilities.list() ) {
+  initialState[ability] = {
+    base: 0,
+    raceAdj: 0,
+    tempAdj: 0
+  };
+}
 
 /*    ACTION TYPES    */
 
@@ -29,21 +24,21 @@ const SET_TEMP_ADJ = "SET_TEMP_ADJ";
 
 /*    ACTION CREATORS    */
 
-const setBase = (abilName, newScore) => ({
+const setBase = (abil, newScore) => ({
   type: SET_BASE,
-  abilName,
+  abil,
   newScore
 });
 
-const setRaceAdj = (abilName, newRAdj) => ({
+const setRaceAdj = (abil, newRAdj) => ({
   type: SET_RACE_ADJ,
-  abilName,
+  abil,
   newRAdj
 });
 
-const setTempAdj = (abilName, newTAdj) => ({
+const setTempAdj = (abil, newTAdj) => ({
   type: SET_TEMP_ADJ,
-  abilName,
+  abil,
   newTAdj
 });
 
@@ -55,15 +50,15 @@ const abilitiesReducer = (state = initialState, action) => {
 
   switch (action.type) {
   case SET_BASE:
-    newState[action.abilName].base = action.newScore;
+    newState[action.abil].base = action.newScore;
     break;
 
   case SET_RACE_ADJ:
-    newState[action.abilName].raceAdj = action.newRAdj;
+    newState[action.abil].raceAdj = action.newRAdj;
     break;
 
   case SET_TEMP_ADJ:
-    newState[action.abilName].tempAdj = action.newTAdj;
+    newState[action.abil].tempAdj = action.newTAdj;
     break;
 
   default: //did not match performable action type

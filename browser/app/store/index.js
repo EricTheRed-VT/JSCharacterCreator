@@ -1,12 +1,14 @@
-'use strict';
+"use strict";
 
-import { createStore, applyMiddleware, combineReducers } from 'redux';
-import thunkMiddleware from 'redux-thunk';
+import { createStore, applyMiddleware, combineReducers } from "redux";
+import thunkMiddleware from "redux-thunk";
 
-import { aReducer } from './reducers/a';
+import { abilitiesReducer } from "./reducers/abilities";
+import { alignmentReducer } from "./reducers/alignment";
 
 const rootReducer = combineReducers({
-  a: aReducer
+  abilities: abilitiesReducer,
+  alignment: alignmentReducer
 });
 
 const store = createStore(
@@ -14,4 +16,4 @@ const store = createStore(
   applyMiddleware(thunkMiddleware)
 );
 
-module.exports = store;
+export default store;
